@@ -1,0 +1,1695 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="/css/faq-style.css">
+    <style type="text/css">
+
+        /*tab 기본 동작 ********************************/
+        .component-tab {
+        }
+
+        .component-tab .tab-menus {
+        }
+
+        .component-tab .tab-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .component-tab .tab-item {
+        }
+
+        .component-tab .tab-trigger {
+            display: inline-block;
+        }
+
+        .component-tab .tab-trigger.tab-selected {
+            font-weight: bold;
+        }
+
+        .component-tab .tab-contents {
+        }
+
+        .component-tab .tab-target {
+            display: none;
+        }
+
+        .component-tab .tab-target.tab-selected {
+            display: block;
+        }
+
+        /*tab FAQ pc 적용  ********************************/
+        #navibar {
+            top: 0;
+        }
+
+        #faqList .faqBody {
+            width: 1024px;
+            margin: 124px auto 0;
+            padding: 0 24px 60px;
+        }
+
+        #faqList .faqBody .tab-menus {
+            margin: 0;
+            margin-bottom: 60px;
+            padding: 0;
+        }
+
+        #faqList .faqBody .tab-list {
+            max-width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #faqList .faqBody .tab-item {
+            float: left;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            color: #5C6476;
+            letter-spacing: -0.1px;
+            cursor: pointer;
+            transition: 0.08s;
+        }
+
+        #faqList .faqBody .tab-trigger {
+            width: 128px;
+            text-align: center;
+            border-radius: 3px;
+            padding: 15px 0;
+            margin: 0 5px 5px 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: #FAFAFA;
+        }
+
+        #faqList .faqBody .tab-trigger:hover {
+            background-color: #ededed;
+        }
+
+        #faqList .faqBody .tab-trigger:active {
+            background-color: #e1e0e0;
+        }
+
+        #faqList .faqBody .tab-trigger.tab-selected {
+            background-color: #3E63BC;
+            border: 1px solid #3E63BC;
+            color: white;
+            font-weight: bold;
+        }
+
+        #faqList .faqBody .tab-trigger.tab-selected:hover {
+            background-color: #3859a9;
+        }
+
+        #faqList .faqBody .tab-trigger.tab-selected:active {
+            background-color: #314f96;
+        }
+
+        #faqList .faqBody .tab-target {
+        }
+
+        #faqList .faqBody .tab-target.tab-selected {
+        }
+
+        /*tab FAQ 모바일 적용 ********************************/
+        @media only screen and (max-width: 768px) {
+            ::-webkit-scrollbar {
+                display: none;
+            }
+
+            #faqList .faqBody {
+                width: auto;
+                padding: 0;
+                margin: 0;
+            }
+
+            #faqList .faqBody .tab-menus {
+                background-color: white;
+                margin: 0 0 16px 0;
+                padding: 0 0 0 0;
+                border-bottom: 1px solid #E0E0E0;
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+                box-sizing: border-box;
+            }
+
+            #faqList .faqBody .tab-list {
+                max-width: none;
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+
+            #faqList .faqBody .tab-item {
+                float: left;
+                margin: 0;
+                padding: 0;
+                background-color: transparent;
+                color: #3E63BC;
+                width: auto;
+            }
+
+            #faqList .faqBody .tab-trigger {
+                width: auto;
+                text-align: center;
+                padding: 17px 3px 14px;
+                margin: 0 15px;
+                border: none;
+                border-radius: 0;
+                background: transparent;
+            }
+
+            #faqList .faqBody .tab-trigger:hover {
+                background-color: transparent;
+            }
+
+            #faqList .faqBody .tab-trigger:active {
+                background-color: transparent;
+            }
+
+            #faqList .faqBody .tab-trigger.tab-selected {
+                background-color: transparent;
+                color: #3E63BC;
+                border: none;
+                border-bottom: 2px solid #3E63BC;
+                border-radius: 0;
+            }
+
+            #faqList .faqBody .tab-trigger.tab-selected:hover {
+                background-color: transparent;
+            }
+
+            #faqList .faqBody .tab-trigger.tab-selected:active {
+                background-color: transparent;
+            }
+
+            #faqList .faqBody .tab-target {
+                padding: 0;
+            }
+
+            #faqList .faqBody .tab-target.tab-selected {
+            }
+        }
+
+        /*accordion  기본 동작 ********************************/
+        .accordion-trigger {
+            display: block;
+        }
+
+        .accordion-trigger.accordion-selected {
+            color: black;
+        }
+
+        .accordion-target {
+            display: none;
+        }
+
+        .accordion-target.accordion-selected {
+            display: block;
+        }
+
+        /*accordion FAQ pc 적용 ********************************/
+        #faqList .faqBody .accordion-item {
+            margin-top: -1px;
+        }
+
+        #faqList .faqBody .accordion-trigger {
+            position: relative;
+            display: block;
+            color: black;
+            padding: 22px 16px;
+            font-weight: normal;
+            border-top: 1px solid #ECECEC;
+            border-bottom: 1px solid #ECECEC;
+            transition: 0.08s;
+            background-color: #fff;
+        }
+
+        #faqList .faqBody .accordion-trigger::after {
+            position: absolute;
+            top: 12px;
+            right: 8px;
+            width: 44px;
+            height: 44px;
+            background-image: url(img/down_arrow.png);
+            background-size: cover;
+            background-position: center;
+            content: "";
+            opacity: 0.15;
+        }
+
+        #faqList .faqBody .accordion-trigger.accordion-selected {
+            font-weight: bold;
+            border-top: 1px solid #E5E5E5;
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        #faqList .faqBody .accordion-trigger.accordion-selected::after {
+            opacity: 0.8;
+            transform: rotate(180deg);
+            top: 10px;
+        }
+
+        #faqList .faqBody .accordion-target {
+            padding: 36px 16px;
+            background-color: #FAFAFA;
+            border-bottom: 1px solid #ECECEC;
+            line-height: 24px;
+            font-size: 15px;
+        }
+
+        #faqList .faqBody .accordion-target.accordion-selected {
+            border-bottom: 1px solid #ECECEC;
+        }
+
+        /*accordion FAQ 모바일 적용 ********************************/
+        @media only screen and (max-width: 768px) {
+            #faqList .faqBody .accordion-item {
+                margin-top: -1px;
+            }
+
+            #faqList .faqBody .accordion-trigger {
+                position: relative;
+                display: block;
+                color: black;
+                padding: 22px 16px;
+                font-weight: normal;
+                border-top: 1px solid #ECECEC;
+                border-bottom: 1px solid #ECECEC;
+                transition: 0.08s;
+                background-color: #fff;
+            }
+
+            #faqList .faqBody .accordion-trigger::after {
+                position: absolute;
+                background: none;
+                content: "";
+                opacity: 0.15;
+            }
+
+            #faqList .faqBody .accordion-trigger.accordion-selected {
+                font-weight: bold;
+                border-top: 1px solid #E5E5E5;
+                border-bottom: 1px solid #E5E5E5;
+            }
+
+            #faqList .faqBody .accordion-trigger.accordion-selected::after {
+                opacity: 0.8;
+                transform: rotate(180deg);
+                top: 0;
+            }
+
+            #faqList .faqBody .accordion-target {
+                padding: 36px 16px;
+                background-color: #FAFAFA;
+                border-bottom: 1px solid #ECECEC;
+                line-height: 24px;
+                font-size: 15px;
+            }
+
+            #faqList .faqBody .accordion-target.accordion-selected {
+                border-bottom: 1px solid #ECECEC;
+            }
+        }
+
+        article {
+            word-break: keep-all;
+        }
+
+        article p {
+            margin-bottom: 1rem;
+            color: rgb(88, 88, 101);
+        }
+
+        article img {
+            width: 576px;
+            max-width: 100%;
+        }
+
+        article a {
+            color: #007bff;
+        }
+
+        article a:hover {
+            color: #0056b3;
+        }
+
+        article ul, article ol {
+            margin: 0 0 1.5rem;
+            padding: 0 0 0 2em;
+            list-style: none;
+        }
+
+        article ol {
+            counter-reset: item 0;
+        }
+
+        article li {
+            margin-bottom: 0.75rem;
+        }
+
+        article ul > li {
+            list-style: disc;
+        }
+
+        article ol > li::before {
+            content: counter(item) ".";
+            counter-increment: item 1;
+            position: absolute;
+            width: 2rem;
+            margin-left: -1.5rem;
+            font-weight: 500;
+            color: #3369e8;
+        }
+
+        .toss-logo {
+            height: 18px;
+        }
+    </style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-56427355-1', 'toss.im');
+        //ga('send', 'pageview');
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-56427355-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body id="faqList">
+<div id="root">
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="head">
+                    <a href="#section1" class="logo"><img src="img/logo.png" alt=""></a>
+                    <ul class="menu">
+                        <li><a href="#section2">또와요소개</a></li>
+                        <li><a href="#section4">차별성</a></li>
+                        <li><a href="#section8">활용방법</a></li>
+                        <li><a href="#section11">입점문의</a></li>
+                        <li><a href="">파트너어드민</a></li>
+                        <li>
+                            <select name="lang" id="lang">
+                                <option value="ko">한국어</option>
+                                <option value="en">English</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav id="nav">
+            <div class="btn"><span></span></div>
+        </nav>
+    </header>
+
+    <section class="faqBody component-tab">
+        <div class="tab-menus">
+            <ul class="tab-list">
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-0">자주 묻는 질문</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-1">송금</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-3">이용방법</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-5">보안</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-7">계좌 조회</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-11">신용등급 조회</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-13">카드 조회</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-15">비대면 계좌 개설</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-17">부동산 소액투자</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-19">P2P 분산투자</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-21">펀드 소액투자</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-23">해외 주식투자</a>
+                </li>
+
+                <li class="tab-item">
+                    <a class="tab-trigger" href="#faq-category-25">기타</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="tab-contents">
+
+            <div class="tab-target" id="faq-category-0" data-id="0">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-435">토스 송금 수수료 정책을 알려주세요</a>
+                        <article class="accordion-target" id="faq-435" data-id="435">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-485">입금확인증은 어디에서 발급 받을 수 있나요?</a>
+                        <article class="accordion-target" id="faq-485" data-id="485">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-447">토스 송금/결제 한도는 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-447" data-id="447">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-459">타인 명의 휴대폰으로도 토스를 사용할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-459" data-id="459">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-457">토스 고객센터에 신분증을 제출하는 방법을 알려주세요</a>
+                        <article class="accordion-target" id="faq-457" data-id="457">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-1" data-id="1">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-435">토스 송금 수수료 정책을 알려주세요</a>
+                        <article class="accordion-target" id="faq-435" data-id="435">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-437">송금받은 돈을 확인할 수 없어요</a>
+                        <article class="accordion-target" id="faq-437" data-id="437">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-439">토스 앱에서 하는 송금은 어떤 방식으로 이뤄지나요?</a>
+                        <article class="accordion-target" id="faq-439" data-id="439">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-445">돈을 잘못 보냈어요</a>
+                        <article class="accordion-target" id="faq-445" data-id="445">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-465">연락처 송금은 어떻게 진행되나요?</a>
+                        <article class="accordion-target" id="faq-465" data-id="465">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-449">CMS 계좌로 송금이 안돼요</a>
+                        <article class="accordion-target" id="faq-449" data-id="449">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-451">계좌에서 잔액이 있는데 송금이 안돼요.</a>
+                        <article class="accordion-target" id="faq-451" data-id="451">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-3" data-id="3">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-485">입금확인증은 어디에서 발급 받을 수 있나요?</a>
+                        <article class="accordion-target" id="faq-485" data-id="485">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-493">첫 화면이 달라졌어요. 송금 과정이 어떻게 달라진건가요?</a>
+                        <article class="accordion-target" id="faq-493" data-id="493">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-495">&#34;내 계좌&#34;를 어디서 확인할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-495" data-id="495">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-497">타임라인이 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-497" data-id="497">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-489">환급도 돈이 나가나요? 제 계좌로 환급하는데 왜 돈이 나가나요?</a>
+                        <article class="accordion-target" id="faq-489" data-id="489">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-453">은행의 자동이체 알림 메시지를 받았어요</a>
+                        <article class="accordion-target" id="faq-453" data-id="453">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-441">토스 고객센터에 문의하려면?</a>
+                        <article class="accordion-target" id="faq-441" data-id="441">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-447">토스 송금/결제 한도는 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-447" data-id="447">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-459">타인 명의 휴대폰으로도 토스를 사용할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-459" data-id="459">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-455">토스머니는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-455" data-id="455">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-457">토스 고객센터에 신분증을 제출하는 방법을 알려주세요</a>
+                        <article class="accordion-target" id="faq-457" data-id="457">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-461">해외에서도 토스 사용이 가능한가요?</a>
+                        <article class="accordion-target" id="faq-461" data-id="461">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-463">토스회원인데 지인에게 비회원으로 나와요.</a>
+                        <article class="accordion-target" id="faq-463" data-id="463">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-467">휴대폰 번호나 기기를 바꾸면 예전 내역은 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-467" data-id="467">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-469">암호가 기억나지 않아 변경하고 싶어요</a>
+                        <article class="accordion-target" id="faq-469" data-id="469">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-471">토스 암호를 5번 틀렸어요. 어떻게 해야 하나요?</a>
+                        <article class="accordion-target" id="faq-471" data-id="471">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-473">서비스 이용 가능한 나이는 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-473" data-id="473">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-475">토스 어플에 사업자 계좌를 등록할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-475" data-id="475">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-477">알뜰폰으로 사용 가능한가요?</a>
+                        <article class="accordion-target" id="faq-477" data-id="477">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-479">다른 사람의 계좌는 등록해서 사용할 수 없나요?</a>
+                        <article class="accordion-target" id="faq-479" data-id="479">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-481">&#39;본인 확인에 실패하였습니다&#39;/&#39;등록된 휴대폰이 아닙니다&#39;라고 나오는데, 어떻게 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-481" data-id="481">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-483">터치ID(지문인식)는 어떻게 사용할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-483" data-id="483">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-5" data-id="5">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-381">공식적으로 인증된 서비스가 맞나요?</a>
+                        <article class="accordion-target" id="faq-381" data-id="381">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-395">토스의 보안은 믿을 수 있는 수준인가요?</a>
+                        <article class="accordion-target" id="faq-395" data-id="395">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-401">가입이나 송금이 너무 쉬운 것 같아 걱정인데요. 토스는 안전한가요?</a>
+                        <article class="accordion-target" id="faq-401" data-id="401">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-407">휴대폰번호나 계좌번호 등 저의 개인 정보는 어떻게 보호되고 있나요?</a>
+                        <article class="accordion-target" id="faq-407" data-id="407">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-409">누군가 거래 정보를 위조할까봐 걱정돼요.</a>
+                        <article class="accordion-target" id="faq-409" data-id="409">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-413">저에게 온 송금 메세지에 다른 사람이 몰래 계좌를 입력하게 되면 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-413" data-id="413">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-417">휴대폰을 분실했는데 보안상 문제는 없을까요?</a>
+                        <article class="accordion-target" id="faq-417" data-id="417">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-425">토스 개별 서비스의 개인정보 제공 동의를 철회할 수 있는 방법이 있나요?</a>
+                        <article class="accordion-target" id="faq-425" data-id="425">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-431">&#39;새로운 기기에서 로그인 되었습니다&#39; 라는 문자를 받았는데 어떤 내용 인가요?</a>
+                        <article class="accordion-target" id="faq-431" data-id="431">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-433">iPhone X의 Face ID 사용은 안전한가요?</a>
+                        <article class="accordion-target" id="faq-433" data-id="433">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-7" data-id="7">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-335">은행 계좌는 어떻게 등록하면 되나요?</a>
+                        <article class="accordion-target" id="faq-335" data-id="335">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-337">은행의 공인인증서를 갱신했는데 토스에서는 어떻게 처리해야하나요?</a>
+                        <article class="accordion-target" id="faq-337" data-id="337">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-339">휴대폰 번호로 된 평생 계좌 번호는 등록이 안되나요?</a>
+                        <article class="accordion-target" id="faq-339" data-id="339">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-345">대구 은행 거래내역 조회가 되지 않아요. 어떻게 해야 하나요?</a>
+                        <article class="accordion-target" id="faq-345" data-id="345">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-355">계좌번호로 은행 계좌를 등록 할 때 ARS 인증 전화가 오지 않아요.</a>
+                        <article class="accordion-target" id="faq-355" data-id="355">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-369">토스 공인인증센터로 공인인증서를 옮기려고 하는데 잘 되지 않아요.</a>
+                        <article class="accordion-target" id="faq-369" data-id="369">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-379">토스 앱만 사용하면 증권사 서비스가 로그아웃 돼요.</a>
+                        <article class="accordion-target" id="faq-379" data-id="379">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-11" data-id="11">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-295">신용등급이란 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-295" data-id="295">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-331">개인이 본인의 신용 조회를 하면 신용등급이 하락하나요?</a>
+                        <article class="accordion-target" id="faq-331" data-id="331">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-299">신용등급과 평점은 어디서 평가하나요?</a>
+                        <article class="accordion-target" id="faq-299" data-id="299">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-301">신용등급은 어떤 기준으로 평가하나요?</a>
+                        <article class="accordion-target" id="faq-301" data-id="301">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-303">신용등급이 높으면 어떤 혜택이 있나요?</a>
+                        <article class="accordion-target" id="faq-303" data-id="303">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-309">신용등급을 올리는 방법은 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-309" data-id="309">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-313">신용등급을 하락시키는 주요 원인은 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-313" data-id="313">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-317">신용평가에 활용되는 정보별 반영 비중은 어떻게 되며, 평점을 가장 크게 하락시키는 정보는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-317" data-id="317">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-323">신용등급별 평점 구간과 백분위 비중은 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-323" data-id="323">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-327">현금 서비스를 사용하면 신용등급에 변화가 생기나요?</a>
+                        <article class="accordion-target" id="faq-327" data-id="327">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-329">소득이나 재산이 많으면 신용등급이 높은가요?</a>
+                        <article class="accordion-target" id="faq-329" data-id="329">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-341">금융기관에서 신용조회를 하면 신용등급이 하락하나요?</a>
+                        <article class="accordion-target" id="faq-341" data-id="341">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-343">신용카드를 많이 발급하면 신용등급이 떨어지나요?</a>
+                        <article class="accordion-target" id="faq-343" data-id="343">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-347">대출은 어디서 받는 것이 신용도에 유리한가요?</a>
+                        <article class="accordion-target" id="faq-347" data-id="347">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-349">등급별 평균 대출 금리는 얼마인가요?</a>
+                        <article class="accordion-target" id="faq-349" data-id="349">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-351">신용관리를 당장 시작해야 하는 이유는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-351" data-id="351">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-353">신용평가사들마다 조회한 신용등급이 다른 이유는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-353" data-id="353">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-357">연체를 상환하면 신용등급이 바로 회복되나요?</a>
+                        <article class="accordion-target" id="faq-357" data-id="357">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-359">대출을 개설하면 신용평점이 얼마나 하락하나요?</a>
+                        <article class="accordion-target" id="faq-359" data-id="359">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-361">주거래 금융기관을 지정해서 이용하면 신용도 상승에 유리하다고 하는데 사실인가요?</a>
+                        <article class="accordion-target" id="faq-361" data-id="361">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-363">담보대출을 받았는데 신용평점이 하락하나요?</a>
+                        <article class="accordion-target" id="faq-363" data-id="363">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-365">사용하지 않는 신용카드를 해지하면 신용평점이 좋아지나요?</a>
+                        <article class="accordion-target" id="faq-365" data-id="365">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-367">한국신용정보원 공공정보 중 신용회복지원(개인워크아웃), 파산면책 결정정보는 언제까지 활용되나요?</a>
+                        <article class="accordion-target" id="faq-367" data-id="367">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-371">개인회생 면책 결정을 받았는데 왜 연체 이력이 삭제되지 않나요?</a>
+                        <article class="accordion-target" id="faq-371" data-id="371">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-373">신용변동 내역에 ‘삭제’라고 나오는 정보는 신용정보 산정에 사용되나요?</a>
+                        <article class="accordion-target" id="faq-373" data-id="373">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-375">연체도 한 적이 없는데 신용이 1등급이 아닌 이유는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-375" data-id="375">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-377">신용평점 상승을 위해 신용거래를 해야 하는 이유는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-377" data-id="377">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-383">연체가 여러 건일 경우 어떤 연체부터 갚는 게 신용에 유리한가요?</a>
+                        <article class="accordion-target" id="faq-383" data-id="383">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-385">연체경험 정보는 언제까지 신용평가에 활용되나요?</a>
+                        <article class="accordion-target" id="faq-385" data-id="385">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-387">연체일수가 어느 정도 길어지면 신용등급에 영향을 주게 되나요?</a>
+                        <article class="accordion-target" id="faq-387" data-id="387">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-389">신용정보회사의 등급만으로 대출(카드) 개설이 거절될 수 있는지요?</a>
+                        <article class="accordion-target" id="faq-389" data-id="389">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-391">신용카드를 많이 사용하면 등급이 하락할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-391" data-id="391">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-393">신용카드 이용은 일시불과 할부 중 어느 쪽이 신용평점에 더 유리한가요?</a>
+                        <article class="accordion-target" id="faq-393" data-id="393">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-397">은행이 아닌 곳에서 대출을 받는 것과 은행에서 받는 것이 신용도에 차이가 있나요?</a>
+                        <article class="accordion-target" id="faq-397" data-id="397">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-399">대출, 카드 이력은 해지 후 몇 년까지 신용평가에 활용되나요?</a>
+                        <article class="accordion-target" id="faq-399" data-id="399">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-403">리볼빙 카드는 신용도에 부정적으로 반영되나요?</a>
+                        <article class="accordion-target" id="faq-403" data-id="403">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-405">대출을 꾸준히 상환했는데 등급(평점)이 상승하지 않는 이유는 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-405" data-id="405">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-411">금융거래 개설 전에 신용등급의 하락 여부를 미리 알아볼 수는 없을까요?</a>
+                        <article class="accordion-target" id="faq-411" data-id="411">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-415">신용평점이나 등급이 왜 하락되었나요?</a>
+                        <article class="accordion-target" id="faq-415" data-id="415">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-419">신용평점이나 등급은 언제 업데이트 되나요?</a>
+                        <article class="accordion-target" id="faq-419" data-id="419">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-421">감당하기 어려운 부채가 있는 경우 도움을 받을 수 있을까요?</a>
+                        <article class="accordion-target" id="faq-421" data-id="421">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-423">한국신용정보원 채무불이행 정보는 연체금을 상환하면 기록이 삭제되나요?</a>
+                        <article class="accordion-target" id="faq-423" data-id="423">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-427">대출을 이미 받았는데 금리를 낮출 수 있나요?</a>
+                        <article class="accordion-target" id="faq-427" data-id="427">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-429">등급별 신용관리법은 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-429" data-id="429">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-13" data-id="13">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-487">카드 조회 서비스는 어떻게 이용하는 서비스인가요?</a>
+                        <article class="accordion-target" id="faq-487" data-id="487">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-285">카드 조회 서비스 이용이 가능한 카드사가 어디인가요?</a>
+                        <article class="accordion-target" id="faq-285" data-id="285">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-287">카드 청구 금액은 어떻게 계산이 되는건가요?</a>
+                        <article class="accordion-target" id="faq-287" data-id="287">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-289">해외 승인내역이 나타나지 않아요.</a>
+                        <article class="accordion-target" id="faq-289" data-id="289">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-15" data-id="15">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-283">KEB하나 e-플러스 통장은 어떻게 개설하는 건가요?</a>
+                        <article class="accordion-target" id="faq-283" data-id="283">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-291">KEB하나 e-플러스 통장을 개설하면 어떤 점이 좋은가요?</a>
+                        <article class="accordion-target" id="faq-291" data-id="291">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-297">KEB하나 e-플러스 통장을 해지하고 싶은데 어떻게 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-297" data-id="297">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-305">신한금융투자 CMA 는 어떻게 개설하는 건가요?</a>
+                        <article class="accordion-target" id="faq-305" data-id="305">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-307">신한금융투자 CMA를 개설하면 어떤 점이 좋은가요?</a>
+                        <article class="accordion-target" id="faq-307" data-id="307">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-311">신한금융투자 CMA를 해지하고 싶은데 어떻게 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-311" data-id="311">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-315">신한금융투자 CMA로 전환하고 입금해두었는데 이자가 지급되지 않았어요.</a>
+                        <article class="accordion-target" id="faq-315" data-id="315">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-319">신한금융투자 CMA의 우대금리는 어떻게 받을 수 있는 건가요?</a>
+                        <article class="accordion-target" id="faq-319" data-id="319">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-321">신한금융투자 CMA는 예금자보호가 되는 상품인가요?</a>
+                        <article class="accordion-target" id="faq-321" data-id="321">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-325">신한금융투자 CMA 투자상품이라면, 원금 손실의 가능성이 있나요?</a>
+                        <article class="accordion-target" id="faq-325" data-id="325">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-333">신한금융투자 CMA의 잔액에 1원이 누락된것 같아요. 왜 그런거죠?</a>
+                        <article class="accordion-target" id="faq-333" data-id="333">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-498">수협 잇(it)딴 주머니 통장은 어떻게 개설하는 건가요?</a>
+                        <article class="accordion-target" id="faq-498" data-id="498">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-500">수협 잇(it)딴 주머니 통장 해지는 어떻게 하나요?</a>
+                        <article class="accordion-target" id="faq-500" data-id="500">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-502">수협 잇(it)딴 주머니 금고가 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-502" data-id="502">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-504">수협 잇(it)딴 주머니 금고는 어떻게 해지 하나요?</a>
+                        <article class="accordion-target" id="faq-504" data-id="504">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-506">수협 잇(it)자유적금을 개설하면 어떤 점이 좋은가요?</a>
+                        <article class="accordion-target" id="faq-506" data-id="506">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-508">수협 잇(it)자유적금은 어떻게 해지하나요?</a>
+                        <article class="accordion-target" id="faq-508" data-id="508">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-510">수협 또잇(it) 간편대출 (마이너스통장)은 어떻게 이용하나요?</a>
+                        <article class="accordion-target" id="faq-510" data-id="510">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-512">수협 또잇(it) 간편대출 (마이너스통장) 개설이 왜 안되나요?</a>
+                        <article class="accordion-target" id="faq-512" data-id="512">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-514">수협 또잇(it) 간편대출 (마이너스통장) 이자는 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-514" data-id="514">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-516">수협 또잇(it) 간편대출 (마이너스통장)은 어떻게 해지 하나요?</a>
+                        <article class="accordion-target" id="faq-516" data-id="516">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-17" data-id="17">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-253">투자하려는데 상품에 대한 문의는 어디로 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-253" data-id="253">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-263">수익금과 원금은 언제 지급되나요?</a>
+                        <article class="accordion-target" id="faq-263" data-id="263">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-265">예치금은 어떻게 출금하나요?</a>
+                        <article class="accordion-target" id="faq-265" data-id="265">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-267">투자했던 원금은 보장 되나요?</a>
+                        <article class="accordion-target" id="faq-267" data-id="267">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-269">투자한 상품을 취소할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-269" data-id="269">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-271">수익금에 대한 세율은 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-271" data-id="271">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-273">테라 펀딩의 자동 투자 서비스 신청했는데 왜 투자 되지 않았나요?</a>
+                        <article class="accordion-target" id="faq-273" data-id="273">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-275">어니스트펀드, 투게더펀딩은 자동 투자 기능이 없나요?</a>
+                        <article class="accordion-target" id="faq-275" data-id="275">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-277">미성년자도 부동산 소액투자를 할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-277" data-id="277">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-279">투자할 수 있는 한도가 얼마까지 인가요?</a>
+                        <article class="accordion-target" id="faq-279" data-id="279">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-19" data-id="19">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-219">투자하려는데 상품에 대한 문의는 어디로 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-219" data-id="219">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-221">P2P 분산투자 진행시 원금은 보장되나요?</a>
+                        <article class="accordion-target" id="faq-221" data-id="221">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-223">투자금의 중도 회수가 가능한가요?</a>
+                        <article class="accordion-target" id="faq-223" data-id="223">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-225">수익금과 원금은 언제 지급되나요?</a>
+                        <article class="accordion-target" id="faq-225" data-id="225">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-229">예치금은 어떻게 출금하나요?</a>
+                        <article class="accordion-target" id="faq-229" data-id="229">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-233">예치금 출금 계좌는 어떻게 변경하나요?</a>
+                        <article class="accordion-target" id="faq-233" data-id="233">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-237">이자소득에 적용되는 세율은 몇 퍼센트인가요?</a>
+                        <article class="accordion-target" id="faq-237" data-id="237">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-251">8퍼센트 비밀번호는 어떻게 확인 할 수 있나요?</a>
+                        <article class="accordion-target" id="faq-251" data-id="251">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-255">미성년자도 P2P 분산 투자가 가능한가요?</a>
+                        <article class="accordion-target" id="faq-255" data-id="255">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-257">탈퇴는 어떻게 해야 하나요?</a>
+                        <article class="accordion-target" id="faq-257" data-id="257">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-259">자동 투자는 어떻게 진행하나요?</a>
+                        <article class="accordion-target" id="faq-259" data-id="259">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-261">투자 가능 한도는 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-261" data-id="261">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-21" data-id="21">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-213">투자하려는데 상품에 대한 문의는 어디로 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-213" data-id="213">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-215">펀드에 투자하려면 어떻게 해야하나요?</a>
+                        <article class="accordion-target" id="faq-215" data-id="215">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-217">신한금융투자 계좌의 비밀번호를 잊어버렸어요. 어떻게 하죠?</a>
+                        <article class="accordion-target" id="faq-217" data-id="217">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-227">투자/환매를 진행했는데 완료된 것인지 모르겠어요.</a>
+                        <article class="accordion-target" id="faq-227" data-id="227">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-231">자동 투자를 선택하면 언제부터 투자를 시작하나요?</a>
+                        <article class="accordion-target" id="faq-231" data-id="231">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-235">투자/환매를 취소하고 싶은데 &#34;지금은 취소가 불가능하다&#34;라고 나와요.</a>
+                        <article class="accordion-target" id="faq-235" data-id="235">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-239">자동 투자한 건에 대해 금액 변동 가능하나요?</a>
+                        <article class="accordion-target" id="faq-239" data-id="239">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-241">1회 최대로 투자 할 수 있는 펀드소액투자 한도는 얼마인가요?</a>
+                        <article class="accordion-target" id="faq-241" data-id="241">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-243">수익률이 업데이트 되는 주기가 있나요?</a>
+                        <article class="accordion-target" id="faq-243" data-id="243">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-245">투자 대기건은 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-245" data-id="245">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-249">구매취소는 어디에서 하며 언제까지 가능한가요?</a>
+                        <article class="accordion-target" id="faq-249" data-id="249">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-23" data-id="23">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-185">투자하려는데 상품에 대한 문의는 어디로 하면 되나요?</a>
+                        <article class="accordion-target" id="faq-185" data-id="185">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-209">투자 수수료는 얼마인가요?</a>
+                        <article class="accordion-target" id="faq-209" data-id="209">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-207">왜 투자 후 주식 가격이 달라지나요?</a>
+                        <article class="accordion-target" id="faq-207" data-id="207">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-205">가격 변동 예비금은 무엇인가요?</a>
+                        <article class="accordion-target" id="faq-205" data-id="205">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-203">투자/매도는 언제 가능한가요?</a>
+                        <article class="accordion-target" id="faq-203" data-id="203">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-201">투자/매도는 언제 완료되나요?</a>
+                        <article class="accordion-target" id="faq-201" data-id="201">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-199">투자/매도를 취소하고 싶어요.</a>
+                        <article class="accordion-target" id="faq-199" data-id="199">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-197">투자/매도했는데 내역이 없어요.</a>
+                        <article class="accordion-target" id="faq-197" data-id="197">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-211">비밀번호를 잊어버렸어요. 어떻게 하죠?</a>
+                        <article class="accordion-target" id="faq-211" data-id="211">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-195">환전을 해야 해외주식을 살 수 있나요?</a>
+                        <article class="accordion-target" id="faq-195" data-id="195">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-193">환전 수수료도 있나요?</a>
+                        <article class="accordion-target" id="faq-193" data-id="193">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-189">매도한 주식은 원화로 입금되나요?</a>
+                        <article class="accordion-target" id="faq-189" data-id="189">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-191">저는 미국 달러를 가지고 있어요. 이 돈으로 바로 주식구매가 가능한가요?</a>
+                        <article class="accordion-target" id="faq-191" data-id="191">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-187">해외주식에서 수수료 제외 후 1년동안 250만원 이상의 수익을 냈다면 어떻게 해야하나요?</a>
+                        <article class="accordion-target" id="faq-187" data-id="187">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-183">250만원 이상의 수익을 냈어요. 양도세 신고대행 / 납부는 어디서 하나요?</a>
+                        <article class="accordion-target" id="faq-183" data-id="183">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-179">해외주식 포함 연간 금융소득이 2,000만원을 넘는다면 어떻게 해야하나요?</a>
+                        <article class="accordion-target" id="faq-179" data-id="179">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-247">구매취소는 어디에서 하며 언제까지 가능한가요?</a>
+                        <article class="accordion-target" id="faq-247" data-id="247">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="tab-target" id="faq-category-25" data-id="25">
+                <ul class="accordion-list">
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-177">오픈소스 라이선스</a>
+                        <article class="accordion-target" id="faq-177" data-id="177">
+                        </article>
+                    </li>
+
+                    <li class="accordion-item">
+                        <a class="accordion-trigger" href="#faq-181">지원은행 및 은행별 점검시간이 어떻게 되나요?</a>
+                        <article class="accordion-target" id="faq-181" data-id="181">
+                        </article>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="pad-50">
+                        <div class="call-center">
+                            <div class="phone-nember">
+                                <a href=""><i class="fa fa-mobile" aria-hidden="true"></i>고객센터 : 031&#41; 302 3334</a>
+                            </div>
+                            <div class="run-time">
+                                <ul>
+                                    <li>영업시간 : 10:00 ~ 18:00 &#40;월요일 - 금요일&#41;</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="contact-us">
+                            <h2>(주)엘린미디어</h2>
+                            <p>경기도 용인시 수지구 죽전로 152 단국대학교 산학협력관 410호 / 대표 : 송호은 / 대표번호 : 031-302-3334 <br> 사업자등록번호 : 328-88-00283 / 통신판매번호 : 2018-용인수지-0277 / 이메일 : contact@elinmedia.com</p>
+                        </div>
+                        <div class="faq">
+                            <a href="faq/faq.html">
+                                <p>FAQ&#40;자주묻는질문&#41;</p>
+                            </a>
+                        </div>
+                        <div class="terms2">
+                            <a href="terms/partner.html">파트너이용약관 </a>
+                            <a href="terms/user.html">사용자이용약관 </a>
+                            <a href="terms/privacy.html"> 개인정보취급방침</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/faq/utility.js"></script>
+<script src="js/faq/Accordion.js"></script>
+<script src="js/faq/Tab.js"></script>
+<script src="js/tossappbridge.min.js"></script>
+
+<script type="text/javascript">
+    function checkAppVersion(major, minor) {
+        var appVersionArray = tossAppBridge.appVersion().split('.');
+        if (+appVersionArray[0] < major)
+            return false;
+        else if (+appVersionArray[1] < minor)
+            return false;
+        else
+            return true;
+    }
+
+    $(document).ready(function() {
+        new Tab($('.faqBody'));
+        $('.accordion-list').each(function(index, element){
+            new Accordion($(element));
+        });
+
+        var faqCategoryHash = "#faq-category-0";
+
+        if (window.location.hash && $(window.location.hash).length) {
+            faqCategoryHash = window.location.hash;
+        }
+
+        $('[href="' + faqCategoryHash + '"]').first().click();
+
+        var osName = tossAppBridge.osName(),
+                osMessage = '토스 앱을 최신 버전으로 업데이트해 주세요',
+                toast = {
+                    name: 'showToast',
+                    params: { message: osMessage }
+                };
+
+        $('article').on('click', '[href^="supertoss://"]', function() {
+            if (osName === 'android') {
+                if (!checkAppVersion(3, 15)) {
+                    alert(osMessage);
+                    return false;
+                } else if (!checkAppVersion(3, 35)) {
+                    tossAppBridge.postMessage(toast);
+                    return false;
+                }
+            } else if (osName === 'ios') {
+                if (!checkAppVersion(3, 10)) {
+                    alert(osMessage);
+                    return false;
+                } else if (!checkAppVersion(3, 21)) {
+                    tossAppBridge.postMessage(toast);
+                    return false;
+                }
+            } else {
+                return confirm('토스 앱 최신 버전이 설치되어 있는지 확인해 주세요. 이동하시겠습니까?');
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title }}</title>
+
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="/stylesheets/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/stylesheets/plugins/steps/jquery.steps.css" rel="stylesheet">
+
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <link href="/stylesheets/common.css" rel="stylesheet">
+    <link href="/stylesheets/animate.css" rel="stylesheet">
+    <link href="/stylesheets/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <link href="/stylesheets/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div class="wrapper wrapper-content">
+        <div class="large-box ibox">
+            <div class="ibox-content signup-content">
+                <div class="text-center m-t m-b-lg">
+<!--                    <img src="/img/logo.png" width="20%">-->
+                    <h1 class="font-bold" style="color: #000;">또와요 파트너 가입신청</h1>
+                </div>
+
+                <form id="form" method="post" action="/signup" class="wizard-big">
+                    <input type="hidden" name="isCheckOverlapId" value="false">
+                    <input type="hidden" name="savingValidPeriod" value="12">
+
+                    <h1>기본정보</h1>
+                    <fieldset>
+                        <h2 class="font-bold">사업자 정보</h2>
+                        <div class="form-group">
+                            <label>
+                                상호명&nbsp;<span class="text-danger">*</span>
+<!--                                <span class="m-l-xl">-->
+<!--                                    <div class="radio radio-success radio-inline"><input type="radio" name="storeType" value="HO" checked><label>본점</label></div>-->
+<!--                                    <div class="radio radio-success radio-inline"><input type="radio" name="storeType" value="BO"><label>지점</label></div>-->
+<!--                                    <button class="btn btn-white btn-xs m-l-sm" data-toggle="tooltip" data-placement="right" title="프랜차이즈나 가맹점의 지점일 경우 선택해주세요." style="margin-top:-8px;">&nbsp;<i class="fa fa-question"></i>&nbsp;</button>-->
+<!--                                </span>-->
+                            </label>
+                            <input name="storeName" type="text" class="form-control required" maxlength="20" onfocusout="checkNotOnlyNumberValid('storeName')" placeholder="ex) 또와요커피">
+                            <label class="error" for="storeName"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>지점명</label>
+                            <input name="storeBranchName" type="text" class="form-control" maxlength="20" onfocusout="checkNotOnlyNumberValid('storeBranchName')" placeholder="ex) 단국대학교점">
+                            <label class="error" for="storeBranchName"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>아이디&nbsp;<span class="text-danger">*</span></label>
+                            <input name="managerId" type="text" class="form-control" maxlength="20" onfocusout="checkOverlapId(event)" placeholder="5-20자(영문 대/소문자, 숫자)">
+                            <label class="error" for="managerId"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>비밀번호&nbsp;<span class="text-danger">*</span></label>
+                            <input name="managerPassword" type="password" class="form-control required" maxlength="20" onfocusout="isPasswordValid('P')" placeholder="8-20자(영문 대/소문자, 숫자)">
+                            <label class="error" for="managerPassword"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>비밀번호 확인&nbsp;<span class="text-danger">*</span></label>
+                            <input name="managerPasswordConfirm" type="password" class="form-control required" maxlength="20" onfocusout="isPasswordValid('C')" placeholder="비밀번호 재입력">
+                            <label class="error" for="managerPasswordConfirm"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>업종&nbsp;<span class="text-danger">*</span></label>
+                            <input name="storeBusinessTypeName" type="text" class="form-control required" maxlength="20" onfocusout="checkOnlyKoreanValid('storeBusinessTypeName')" placeholder="ex) 카페, 요식업, 미용실 등">
+                            <label class="error" for="storeBusinessTypeName"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>대표번호&nbsp;<span class="text-danger">*</span></label>
+                            <input name="storeTel" type="text" class="form-control required number" maxlength="12" placeholder="- 없이 입력해주세요.">
+                            <label class="error" for="storeTel"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>사업자등록번호&nbsp;<span class="text-danger">*</span></label>
+                            <input name="storeBusinessNumber" type="text" class="form-control required number" maxlength="10" placeholder="- 없이 입력해주세요.(10자리 숫자)">
+                            <label class="error" for="storeBusinessNumber"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>법인등록번호</label>
+                            <input name="storeCorporationNumber" type="text" class="form-control number" maxlength="13" placeholder="- 없이 입력해주세요.(13자리 숫자)">
+                            <label class="error" for="storeCorporationNumber"></label>
+                        </div>
+                        <div class="form-group m-b-xl">
+                            <label>주소&nbsp;<span class="text-danger">*</span></label>
+
+                            <div class="input-group m-b-xs">
+                                <input name="storeZipCode" type="text" class="form-control inline postcodify_postcode5" placeholder="우편번호" style="width: 100px;" readonly>
+                                <button id="addressSearchPopup" type="button" class="btn btn-primary m-l-sm">주소검색</button>
+                            </div>
+                            <input name="storeAddress" type="text" class="form-control required m-b-xs postcodify_address" placeholder="도로명주소" readonly>
+                            <input name="storeAddressDetail" type="text" class="form-control postcodify_details" placeholder="상세주소" maxlength="100">
+                            <label class="error" for="storeAddress"></label>
+                            <label class="error" for="storeAddressDetail"></label>
+                        </div>
+
+                        <h2 class="font-bold">담당자 정보</h2>
+                        <div class="form-group">
+                            <label>성명&nbsp;<span class="text-danger">*</span></label>
+                            <input name="storeOperatorName" type="text" class="form-control required" maxlength="20" onfocusout="checkOnlyKoreanValid('storeOperatorName')">
+                            <label class="error" for="storeOperatorName"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>직급(직책)</label>
+                            <input name="storeOperatorPosition" type="text" class="form-control" maxlength="20" onfocusout="checkOnlyKoreanValid('storeOperatorPosition')" placeholder="ex) 사장, 매니저, 팀장 등">
+                            <label class="error" for="storeOperatorPosition"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>휴대폰&nbsp;<span class="text-danger">*</span></label>
+                            <div class="input-group m-b-xs">
+                                <input name="storeOperatorPhone" type="text" class="form-control required number" placeholder="전화번호 입력 (- 없이 입력해주세요.)" maxlength="12">
+                                <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="getVerificationCode(event)">&nbsp;인증번호 받기&nbsp;</button></span>
+                            </div>
+                            <label class="error" for="storeOperatorPhone"></label>
+                            <input name="phoneVerificationCode" type="text" class="form-control" placeholder="인증번호 입력" maxlength="5" onfocusout="checkVerificationCode()" readonly>
+                            <label class="error" for="phoneVerificationCode"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>유선전화</label>
+                            <input name="storeOperatorTel" type="text" class="form-control number" maxlength="12" placeholder="- 없이 입력해주세요.">
+                            <label class="error" for="storeOperatorTel"></label>
+                        </div>
+                        <div class="form-group">
+                            <label>이메일&nbsp;<span class="text-danger">*</span></label>
+                            <input name="storeOperatorEmail" type="email" class="form-control required email">
+                            <label class="error" for="storeOperatorEmail"></label>
+                        </div>
+                    </fieldset>
+
+                    <h1>계약정보/서비스신청</h1>
+                    <fieldset>
+                        <h2 class="font-bold">계약정보</h2>
+                        <div class="form-group">
+                            <label>계약기간&nbsp;<span class="text-danger">*</span></label>
+                            <select name="storeContactPeriod" class="form-control m-b required">
+                                <option value="12">1년</option>
+                            </select>
+                            <p class="comment text-keep">※ 계약기간 만료 전까지 별도의 해지 또는 종료 요청을 하지 않을 경우 계약기간은 1년씩 자동 연장되며, 자동 연장 시 서비스요금이 부과/변경될 수 있습니다.</p>
+                        </div>
+                        <div class="form-group">
+                            <label>입금계좌&nbsp;<span class="text-danger">*</span></label>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input name="storeAccountName" type="text" class="form-control required" placeholder="예금주" maxlength="20" onfocusout="checkNotOnlyNumberValid('storeAccountName')">
+                                    <label class="error" for="storeAccountName"></label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input name="storeBankName" type="text" class="form-control required" placeholder="은행명" maxlength="20" onfocusout="checkNotOnlyNumberValid('storeBankName')">
+                                    <label class="error" for="storeBankName"></label>
+                                </div>
+                            </div>
+                            <input name="storeAccount" type="text" class="form-control m-t-sm required number" placeholder="계좌번호 (- 없이 입력해주세요.)" maxlength="100">
+                            <label class="error" for="storeAccount"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <h5>정산주기 안내</h5>
+                            <p class="comment text-keep">※ 모바일 쇼핑몰 결제 또는 문자메시지 사용 등에 대한 전월 1일 ~ 말일 결제 건에 한해 매월 10일 1회 입금 또는 청구됩니다. (단, 정산일이 비영업일인 경우 익 영업일에 지급됩니다.)
+                                ‘또와요 파트너어드민 > 정산 내역’ 에서 자세히 조회 가능합니다.</p>
+
+                            <h5>서비스시작일 안내</h5>
+                            <p class="comment text-keep">※ 서비스시작일은 계약완료 후 약 7일 정도(영업일 기준) 소요될 수 있습니다.</p>
+                        </div>
+
+                        <h2 class="font-bold">적립서비스 신청</h2>
+                        <div class="form-group m-b-xl">
+                            <label>적립타입&nbsp;<span class="text-danger">*</span></label>
+                            <button class="btn btn-white btn-xs m-l-sm" data-toggle="tooltip" data-placement="right" title="가격차가 적은 음료위주의 카페는 도장(스탬프) 적립을 선호, 디저트나 베이커리, 다이닝, 요식업종은 포인트 사용방식을 선호하는 편입니다.">&nbsp;<i class="fa fa-question"></i>&nbsp;</button>
+                            <div>
+                                <div class="radio radio-success radio-inline"><input type="radio" name="storeSavingType" value="S" checked onclick="changeSavingControl('S')"><label>도장(스탬프)</label></div>
+                                <div class="radio radio-success radio-inline"><input type="radio" name="storeSavingType" value="P"onclick="changeSavingControl('P')"><label>포인트</label></div>
+                            </div>
+                            <h4 class="stampGroup text-keep m-t">
+                                도장(스탬프)&nbsp;<input name="storeStampCnt" type="tel" class="form-control inline number" style="width: 70px;" placeholder="10">&nbsp;개 적립 당&nbsp;<input name="savingCouponName" type="text" class="form-control inline" style="width: 250px;" placeholder="아이스아메리카노 Large 1잔">&nbsp;무료 적립쿠폰을 발행하며, 유효기간은 12개월입니다.
+                                <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="right" title="적립쿠폰이란 목표한 도장(스탬프) 개수만큼 적립 시 고객에게 발행되는 상품무료쿠폰입니다. 보통 도장 10개, 20개당 적립쿠폰을 발행하는 경우가 많습니다.">&nbsp;<i class="fa fa-question"></i>&nbsp;</button>
+                                <label class="error" for="storeStampCnt"></label>
+                            </h4>
+                            <h4 class="pointGroup text-keep m-t">
+                                결제금액의&nbsp;<input name="storePointCnt" type="tel" class="form-control inline number" style="width: 70px;" placeholder="3">&nbsp;% 를 적립하며, 포인트&nbsp;<input name="pointUseCnt" type="text" class="form-control inline number" style="width: 100px;" placeholder="2,000">&nbsp;P 부터 사용 가능합니다.
+                                <button class="btn btn-white btn-xs" data-toggle="tooltip" data-placement="right" title="보통 결제금액의 2-3% 적립을 가장 많이 설정하며, 적립된 포인트는 현금처럼 사용이 가능합니다.">&nbsp;<i class="fa fa-question"></i>&nbsp;</button>
+                                <label class="error" for="storePointCnt"></label>
+                                <label class="error" for="pointUseCnt"></label>
+                            </h4>
+                        </div>
+
+                        <h2 class="font-bold">문자메시지 신청</h2>
+                        <div class="form-group">
+                            <label>필수항목&nbsp;<span class="text-danger">*</span></label>
+                            <div>
+                                <div class="checkbox checkbox-default stampGroup" onclick="preventCheckbox(event)"><input type="checkbox" name="msgSSYn" checked><label>도장(스탬프) 적립 시 알림 문자</label></div>
+                                <div class="checkbox checkbox-default stampGroup" onclick="preventCheckbox(event)"><input type="checkbox" name="msgSCYn" checked><label>적립쿠폰 발행 시 알림 문자</label></div>
+                                <div class="checkbox checkbox-default pointGroup" onclick="preventCheckbox(event)"><input type="checkbox" name="msgPSYn" checked><label>포인트 적립 시 알림 문자</label></div>
+                                <div class="checkbox checkbox-default pointGroup" onclick="preventCheckbox(event)"><input type="checkbox" name="msgPDYn" checked><label>포인트 사용 시 알림 문자</label></div>
+                                <div class="checkbox checkbox-default" onclick="preventCheckbox(event)"><input type="checkbox" name="msgCUYn" checked><label>이벤트쿠폰 발행 시 알림 문자</label></div>
+                                <div class="checkbox checkbox-default" onclick="preventCheckbox(event)"><input type="checkbox" name="msgGAYn" checked><label>구매 선물/상품 수신자에게 알림 문자</label></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>추가선택항목</label>
+                            <div>
+                                <div class="checkbox checkbox-success"><input type="checkbox" name="msgGBYn"><label>구매 선물/상품 구매자에게 알림 문자</label></div>
+                                <div class="checkbox checkbox-success"><input type="checkbox" name="msgCEYn"><label>이벤트쿠폰 유효기간 만료(7일) 전 알림 문자</label></div>
+                                <div class="checkbox checkbox-success"><input type="checkbox" name="msgGEYn"><label>구매 선물/상품 유효기간 만료(7일) 전 알림 문자</label></div>
+                                <div class="comment text-keep"><p>※ 건당 SMS 13원, LMS 29원입니다.(부가세 포함)</p></div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="/js/inspinia/jquery-3.1.1.min.js"></script>
+<script src="/js/inspinia/bootstrap.min.js"></script>
+<script src="/js/inspinia/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/js/inspinia//plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<script src="/js/inspinia/plugins/dataTables/datatables.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="/js/inspinia/inspinia.js"></script>
+<script src="/js/inspinia/plugins/pace/pace.min.js"></script>
+
+<!-- Steps -->
+<script src="/js/inspinia/plugins/steps/jquery.steps.min.js"></script>
+
+<!-- jQuery와 Postcodify를 로딩한다 -->
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+<script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+
+<!-- Jquery Validate -->
+<script src="/js/inspinia/plugins/validate/jquery.validate.min.js"></script>
+
+<!-- Data picker -->
+<script src="/js/inspinia/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<!-- Page-Level Scripts -->
+<script>
+    let verificationCode = 0;
+    const phoneRegex = /^(01[0, 1, 6]{1})([0-9]{3,4})([0-9]{4})$/
+    const telRegex = /^([0-9]{3,4})([0-9]{3,4})([0-9]{4})$/
+    const idRegex =  /^[A-Za-z0-9]{5,20}$/
+    const passwordRegex = /^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/
+    const onlyNumberRegex =  /^[0-9]*$/
+    const onlyKoreanRegex = /^[가-힣\s]+$/
+    const onlyCharacterRegex = /^[ㄱ-ㅎA-Za-z]$/
+
+    $(document).ready(function(){
+        $("#wizard").steps();
+        $("#form").steps({
+            bodyTag: "fieldset",
+            onStepChanging: function (event, currentIndex, newIndex)
+            {
+                let isValid = true;
+
+                // Always allow going backward even if the current step contains invalid fields!
+                if (currentIndex > newIndex)
+                {
+                    return true;
+                }
+
+                var form = $(this);
+
+                // Clean up if user went backward before
+                if (currentIndex < newIndex)
+                {
+                    // To remove error styles
+                    $(".body:eq(" + newIndex + ") label.error", form).remove();
+                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                }
+
+                // Disable validation on fields that are disabled or hidden.
+                form.validate().settings.ignore = ":disabled,:hidden";
+
+                if (currentIndex === 0) {
+                    // 기본 정보 유효성 검사
+
+                    // 숫자만 안되는 항목
+                    // checkNotOnlyNumberValid();
+
+                    // 아이디
+                    if ($('input[name="isCheckOverlapId"]').val() === 'false') {
+                        inputErrorControl(true, 'managerId', '아이디를 다시 확인해주세요.');
+                        $('input[name="managerId"]').focus();
+                        isValid = isValid && false;
+                    }
+
+                    // 비밀번호
+                    if (!isPasswordValid()) {
+                        isValid = isValid && false;
+                    }
+
+                    // 사업자등록번호( 10자 )
+                    let storeBusinessNumber = $('input[name="storeBusinessNumber"]');
+                    if (storeBusinessNumber.val() !== '') {
+                        if (storeBusinessNumber.val().length < 10) {
+                            inputErrorControl(true, 'storeBusinessNumber', '사업자등록번호를 확인해주세요.');
+                            isValid = isValid && false;
+                        }
+                    }
+
+                    // 법인등록번호
+                    let storeCorporationNumber = $('input[name="storeCorporationNumber"]');
+                    if (storeCorporationNumber.val() !== '') {
+                        if (storeCorporationNumber.val().length < 13) {
+                            inputErrorControl(true, 'storeCorporationNumber', '법인등록번호를 확인해주세요.');
+                            isValid = isValid && false;
+                        }
+                    }
+
+                    // 인증번호
+                    isValid = isValid && checkVerificationCode();
+               }
+
+                // Start validation; Prevent going forward if false
+                return isValid && form.valid();
+            },
+            onStepChanged: function (event, currentIndex, priorIndex)
+            {
+                // Suppress (skip) "Warning" step if the user is old enough.
+                if (currentIndex === 1)
+                {
+                    $('#form input').blur(function (e) {
+                        $(this).valid();
+                    });
+
+                    changeSavingControl('S');
+                    $(this).steps("next");
+                }
+
+                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                if (currentIndex === 1 && priorIndex === 2)
+                {
+                    $(this).steps("previous");
+                }
+            },
+            onFinishing: function (event, currentIndex)
+            {
+                var form = $(this);
+
+                // Disable validation on fields that are disabled.
+                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                form.validate().settings.ignore = ":disabled";
+
+                // Start validation; Prevent form submission if false
+                return form.valid();
+            },
+            onFinished: function (event, currentIndex)
+            {
+                var form = $(this);
+
+                // Submit form input
+                form.submit();
+            }
+        }).validate({
+            errorPlacement: function (error, element)
+            {
+                element.before(error);
+            },
+            // rules: {
+            //     confirm: {
+            //         equalTo: "#password"
+            //     }
+            // }
+        });
+
+        $('#addressSearchPopup').postcodifyPopUp();
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('[data-toggle="tooltip"]').click(function (e) {
+            e.preventDefault();
+        });
+
+        $('#form input').blur(function (e) {
+            $(this).valid();
+        })
+    });
+
+    function preventCheckbox() {
+        let storeSavingType = $('input[name="storeSavingType"]');
+
+        if (storeSavingType.val() === 'S') {
+            $('input[name="msgSSYn"]').prop('checked', true);
+            $('input[name="msgSCYn"]').prop('checked', true);
+            $('input[name="msgPSYn"]').prop('checked', false);
+            $('input[name="msgPDYn"]').prop('checked', false);
+        }
+        else if (storeSavingType.val() === 'S') {
+            $('input[name="msgSSYn"]').prop('checked', false);
+            $('input[name="msgSCYn"]').prop('checked', false);
+            $('input[name="msgPSYn"]').prop('checked', true);
+            $('input[name="msgPDYn"]').prop('checked', true);
+        }
+        $('input[name="msgCUYn"]').prop('checked', true);
+        $('input[name="msgGAYn"]').prop('checked', true);
+    }
+
+    function changeSavingControl(type) {
+        if (type === 'S') {
+            $('input[name="msgSSYn"]').prop('checked', true);
+            $('input[name="msgSCYn"]').prop('checked', true);
+            $('input[name="msgPSYn"]').prop('checked', false);
+            $('input[name="msgPDYn"]').prop('checked', false);
+            $('.pointGroup').css('display', 'none');
+            $('.stampGroup').css('display', 'block');
+            $('input[name="storePointCnt"]').removeClass('required');
+            $('input[name="pointUseCnt"]').removeClass('required');
+            $('input[name="storeStampCnt"]').addClass('required');
+            $('input[name="savingCouponName"]').addClass('required');
+        }
+        else if (type === 'P') {
+            $('input[name="msgSSYn"]').prop('checked', false);
+            $('input[name="msgSCYn"]').prop('checked', false);
+            $('input[name="msgPSYn"]').prop('checked', true);
+            $('input[name="msgPDYn"]').prop('checked', true);
+            $('.stampGroup').css('display', 'none');
+            $('.pointGroup').css('display', 'block');
+            $('input[name="storeStampCnt"]').removeClass('required');
+            $('input[name="savingCouponName"]').removeClass('required');
+            $('input[name="storePointCnt"]').addClass('required');
+            $('input[name="pointUseCnt"]').addClass('required');
+        }
+    }
+    
+    function checkOverlapId(e) {
+        let managerId = $('input[name="managerId"]');
+
+        if (managerId.valid()) {
+            if (idRegex.test(managerId.val())) {
+                if (onlyNumberRegex.test(managerId.val())) {
+                    inputErrorControl(true, 'managerId', '숫자만 입력할 수 없습니다.');
+                    return false;
+                }
+                else {
+                    inputErrorControl(false, 'managerId');
+                }
+            }
+            else {
+                inputErrorControl(true, 'managerId', '5~20자 영문 대 소문자, 숫자 사용 가능합니다.');
+                $('input[name="isCheckOverlapId"]').val(false);
+                return false;
+            }
+        }
+        else {
+            $('input[name="isCheckOverlapId"]').val(false);
+            return false;
+        }
+
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "/signup/checkOverlapId",
+            method: 'post',
+            data: {
+                managerId: $('input[name="managerId"]').val(),
+            },
+            success: function(result) {
+                if (result.errorCode === 0) {
+                    if (result.isOverlap === 0) {
+                        $('input[name="isCheckOverlapId"]').val(true);
+                        inputErrorControl(false, 'managerId');
+                        inputGuideControl(true, 'managerId', '사용 가능한 아이디입니다.');
+                    }
+                    else {
+                        $('input[name="isCheckOverlapId"]').val(false);
+                        inputErrorControl(true, 'managerId', '아이디가 중복됩니다. 다시 입력해주세요.');
+                    }
+                }
+                else {
+                    alert('오류 발생, 다시 시도해주세요.');
+                }
+            }
+        });
+    }
+
+    function getVerificationCode(e) {
+        let storeOperatorPhone = $('input[name="storeOperatorPhone"]');
+
+        if (storeOperatorPhone.valid()) {
+            if (!phoneRegex.test(storeOperatorPhone.val())) {
+                inputErrorControl(true, 'storeOperatorPhone', '전화번호를 다시 확인해주세요.');
+                return;
+            }
+            else {
+                inputErrorControl(false, 'storeOperatorPhone');
+            }
+        }
+        else {
+            return;
+        }
+
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "/signup/getVerificationCode",
+            method: 'post',
+            data: {
+                phone: $('input[name="storeOperatorPhone"]').val()
+            },
+            success: function(result) {
+                if (result.errorCode === 0) {
+                    $('input[name="phoneVerificationCode"]').attr('readonly', false);
+                    inputGuideControl(true, 'phoneVerificationCode', '인증번호를 발송했습니다. 인증번호가 오지 않으면 입력하신 정보가 정확한지 확인하여 주세요.');
+                    verificationCode = result.verificationCode;
+                    // alert('[테스트] 인증번호: ' + verificationCode)
+                }
+                else {
+                    alert('다시 인증번호를 받아주세요.');
+                }
+            }
+        });
+    }
+    
+    function isPasswordValid(type) {
+        let password = $('input[name="managerPassword"]');
+        let passwordConfirm = $('input[name="managerPasswordConfirm"]');
+
+        switch (type) {
+            case 'P':
+                // 비밀번호: 필수, 유효성
+                return checkPassword(password);
+                break;
+            case 'C':
+                // 비밀번호 확인: 필수, 비밀번호와 일치
+                return checkPasswordConfirm(password, passwordConfirm);
+                break;
+            default:
+                // 비밀번호: 필수, 유효성
+                // 비밀번호 확인: 필수, 비밀번호와 일치
+                let isPasswordValid = checkPassword(password);
+                let isPasswordConfirmValid = checkPasswordConfirm(password, passwordConfirm);
+
+                return isPasswordValid && isPasswordConfirmValid;
+                break;
+        }
+    }
+
+    function checkPassword(password) {
+        if (password.valid()) {
+            if (passwordRegex.test(password.val())) {
+                inputErrorControl(false, 'managerPassword');
+                return true;
+            }
+            else {
+                inputErrorControl(true, 'managerPassword', '8~20자 영문 대 소문자, 숫자 사용하세요.');
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+
+    function checkPasswordConfirm(password, passwordConfirm) {
+        if (passwordConfirm.valid()) {
+            if (password.val() === passwordConfirm.val()) {
+                inputErrorControl(false, 'managerPasswordConfirm');
+                return true;
+            }
+            else {
+                inputErrorControl(true, 'managerPasswordConfirm', '비밀번호가 일치하지 않습니다.');
+                passwordConfirm.val('');
+                return false;
+            }
+        }
+    }
+
+    function checkVerificationCode() {
+        let inputVerificationCode = $('input[name="phoneVerificationCode"]');
+
+        if (inputVerificationCode.val() !== '') {
+            if (inputVerificationCode.val() == verificationCode) {
+                inputErrorControl(false, 'phoneVerificationCode');
+                inputGuideControl(true, 'phoneVerificationCode', '인증 성공했습니다.');
+                return true;
+            }
+            else {
+                inputErrorControl(true, 'phoneVerificationCode', '인증번호를 다시 확인해주세요.');
+                return false;
+            }
+        }
+        else {
+            inputErrorControl(true, 'phoneVerificationCode', '필수 정보입니다.');
+            return false;
+        }
+    }
+    
+    function checkNotOnlyNumberValid(name) {
+        let input = $('input[name=' +  name + ']');
+
+        if (input.val() !== '') {
+            if (onlyNumberRegex.test(input.val())) {
+                inputErrorControl(true, name, '숫자만 입력할 수 없습니다.');
+                input.focus();
+                return false;
+            }
+            else {
+                inputErrorControl(false, name);
+                return true;
+            }
+        }
+    }
+
+    function checkOnlyKoreanValid(name) {
+        let input = $('input[name=' +  name + ']');
+
+        if (input.val() !== '') {
+            if (!onlyKoreanRegex.test(input.val())) {
+                inputErrorControl(true, name, '한글만 입력 가능합니다.');
+                input.focus();
+                return false;
+            }
+            else {
+                inputErrorControl(false, name);
+                return true;
+            }
+        }
+    }
+
+    function inputErrorControl(isError, name, text) {
+        if (isError) {
+            $('input[name=' +  name + ']').removeClass('guide');
+            $('input[name=' +  name + ']').addClass('error');
+            $('label[for=' +  name + ']').removeClass('guide');
+            $('label[for=' +  name + ']').addClass('error');
+
+            $('label[for=' +  name + ']').css('display', 'block');
+            $('label[for=' +  name + ']').text(text);
+            // $('input[name=' +  name + ']').focus()
+        }
+        else {
+            $('input[name=' +  name + ']').removeClass('error');
+            $('label[for=' +  name + ']').addClass('error');
+            $('label[for=' +  name + ']').css('display', 'none');
+            $('label[for=' +  name + ']').text('');
+        }
+    }
+
+    function inputGuideControl(isGuide, name, text) {
+        if (isGuide) {
+            $('input[name=' +  name + ']').removeClass('error');
+            $('input[name=' +  name + ']').addClass('guide');
+            $('label[for=' +  name + ']').removeClass('error');
+            $('label[for=' +  name + ']').addClass('guide');
+
+            $('label[for=' +  name + ']').css('display', 'block');
+            $('label[for=' +  name + ']').text(text);
+            // $('input[name=' +  name + ']').focus()
+        }
+        else {
+            $('input[name=' +  name + ']').removeClass('guide');
+            $('label[for=' +  name + ']').removeClass('guide');
+            $('label[for=' +  name + ']').css('display', 'none');
+            $('label[for=' +  name + ']').text('');
+        }
+    }
+</script>
+
+</body>
+
+</html>
+

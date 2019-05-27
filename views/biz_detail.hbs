@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{title}}</title>
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="/stylesheets/font-awesome/css/font-awesome.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link href="/stylesheets/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="/stylesheets/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+
+    <link href="/stylesheets/plugins/datapicker/datepicker3.css" rel="stylesheet">
+
+    <link href="/stylesheets/animate.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.min.js"></script>
+</head>
+
+<body class="pace-done mini-navbar">
+<div id="wrapper">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2> 입점 문의 상세</h2>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight ecommerce">
+        {{#each detail}}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5 class="text-success"><i class="fas fa-star text-danger"></i> {{this.regDate}} 등록</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <form id="biz_form" method="post" class="form-horizontal" action="/bizs/update">
+                                <input type="hidden" class="form-control" name="bizId" value="{{this.id}}">
+                                <div class="form-group"><label class="col-sm-2 control-label text-muted"><i
+                                        class="fa fa-store"></i> 매장명</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static"><i
+                                                class="fas fa-angle-right text-info"></i>  {{this.inquiry_biz_name}}</p>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label text-muted"><i
+                                        class="fas fa-coffee"></i> 업종</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static"><i
+                                                class="fas fa-angle-right text-info"></i>  {{this.inquiry_biz_type}}</p>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label text-muted"><i
+                                        class="fas fa-mobile-alt"></i> 연락처</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static">
+                                            <i class="fas fa-angle-right text-info"></i>  {{this.inquiry_biz_contact}}
+                                        </p>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label text-muted"><i
+                                        class="fas fa-at"></i> 이메일</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static"><i
+                                                class="fas fa-angle-right text-info"></i>  {{this.inquiry_biz_email}}
+                                        </p>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label text-muted"><i
+                                        class="fas fa-map-marker-alt"></i> 주소</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static"><i
+                                                class="fas fa-angle-right text-info"></i>  {{this.inquiry_biz_addr}}</p>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label text-muted">
+                                        <i class="fas fa-search"></i> 검색 경로</label>
+                                    <div class="col-sm-10">
+                                        <h3><p class="form-control-static"><i
+                                                class="fas fa-angle-right text-info"></i>  {{this.inquiry_path}}</p>
+                                        </h3>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label text-muted"
+                                               style="margin-left: 14px;"><i
+                                                class="fas fa-question-circle"></i> 상세 문의</label>
+                                        <div class="col-sm-4"><textarea class="form-control"
+                                                                        rows="10">{{this.inquiry_biz_content}}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">영업상태</label>
+                                    <div class="col-sm-2">
+                                        <select class="form-control m-b" name="bizStatus" id="bizStatus">
+                                            <option value="0" >접수대기</option>
+                                            <option value="1" >접수완료</option>
+                                            <option value="2" >영업진행중</option>
+                                            <option value="3" >미계약</option>
+                                            <option value="4" >계약완료</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group"><label class="col-sm-2 control-label">문의 메모</label>
+                                    <div class="col-sm-4"><textarea class="form-control" name="bizMemo"
+                                                                    rows="10">{{this.inquiry_memo}}</textarea></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <a class="btn btn-white" id="goList">취소</a>
+                                        <button class="btn btn-info" type="submit">저장</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<script src="/js/inspinia/jquery-3.1.1.min.js"></script>
+<script>
+
+
+
+    $(document).ready(function () {
+
+        {{#each detail}}
+            $("#bizStatus").val({{this.inquiry_result}}).prop("selected", true);
+        {{/each}}
+        $("#goList").click(function () {
+            window.history.back();
+            location.href = '/bizs';
+        });
+
+    });
+
+    $("#biz_form").submit(function (event) {
+        event.preventDefault();
+        let url = $(this).attr("action");
+        let data = $(this).serialize();
+
+        $.post(url, data)
+                .done(function (data) {
+                    if (data) {
+                        alert('정상적으로 저장 되었습니다.');
+                        location.reload();
+                    } else {
+                        alert('저장 중에 오류가 발생하였습니다.');
+                    }
+                });
+    });
+
+</script>
+
+</body>
+
+</html>
+
